@@ -1,4 +1,4 @@
-namespace backend
+namespace education.Server
 {
     public class WeatherForecast
     {
