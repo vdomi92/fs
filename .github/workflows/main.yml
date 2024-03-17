@@ -30,13 +30,13 @@ jobs:
 
           
       - name: Restore
-        run: dotnet restore ./education.sln
+        run: dotnet restore ./education/education.sln
         
       - name: Build
-        run: dotnet build  ./education.sln --configuration Release --no-restore
+        run: dotnet build  ./education/education.sln --configuration Release --no-restore
         
       - name: Publish
-        run: dotnet publish  ./education.sln --configuration Release --no-build --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
+        run: dotnet publish  ./education/education.sln --configuration Release --no-build --output '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
         
 #      - name: Deployment
 #        uses: azure/webapps-deploy@v2
