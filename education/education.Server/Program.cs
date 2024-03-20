@@ -1,3 +1,8 @@
+using data_access_layer.Domain.Context;
+using data_access_layer.Domain.Entites.Common;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,7 +12,23 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Registering the DbContext
+var connectionString = builder.Configuration.GetConnectionString("EduSqlServer");
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(connectionString, b => b.MigrationsAssembly("data_access_layer")));
+
+// Registering the Identity
+builder.Services.AddAuthorization();
+
+// Activate identity API endpoints
+builder.Services.AddIdentityApiEndpoints<User>()
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+
 var app = builder.Build();
+
+// Mapping identity endpoints
+app.MapIdentityApi<User>();
 
 app.UseDefaultFiles();
 app.UseStaticFiles();
