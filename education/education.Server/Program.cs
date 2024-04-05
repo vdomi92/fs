@@ -1,7 +1,8 @@
 using data_access_layer.Domain.Context;
 using data_access_layer.Domain.Entites.Common;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,8 +15,8 @@ builder.Services.AddSwaggerGen();
 
 // Registering the DbContext
 var connectionString = builder.Configuration.GetConnectionString("EduSqlServer");
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(connectionString, b => b.MigrationsAssembly("data_access_layer")));
+builder.Services.AddDbContext<ApplicationDbContext>(
+    options => options.UseSqlServer(connectionString, b => b.MigrationsAssembly("data_access_layer")));
 
 // Registering the Identity
 builder.Services.AddAuthorization();
