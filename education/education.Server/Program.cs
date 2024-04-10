@@ -11,9 +11,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Registering the DbContext
-var connectionString = builder.Configuration.GetConnectionString("EduSqlServer");
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString, b => b.MigrationsAssembly("data_access_layer")));
+// Registering the DbContext, should work as the commented section below, but it doesn't. Microsoft bros at it trying to make it work.
+// Untill that, we have hardcoded sql connection string.
+//var connectionString = builder.Configuration.GetConnectionString("EduSqlServer");
+//builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString, b => b.MigrationsAssembly("data_access_layer")));
+builder.Services.AddDbContext<ApplicationDbContext>();
 
 // Registering the Identity
 builder.Services.AddAuthorization();
