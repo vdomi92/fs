@@ -8,10 +8,11 @@ namespace data_access_layer.Domain.Context
 {
     public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
-        //public ApplicationDbContext()
-        //{
-        //     THIS SHIT SHOULD NOT BE HERE WHY CANT PROPER SERVICE REGISTRATION WORK???????????????????
-        //}
+        public ApplicationDbContext()
+        {
+            //THIS SHIT SHOULD NOT BE HERE WHY CANT PROPER SERVICE REGISTRATION WORK???????????????????
+        }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) :
             base(options)
         {
