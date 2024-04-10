@@ -43,7 +43,7 @@ namespace data_access_layer.Domain.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer("Server=.;Database=EduDb;Trusted_Connection=True;Encrypt=False", b => b.MigrationsAssembly("data_access_layer"));
+            optionsBuilder.UseSqlServer("Server=.;Database=EduDb;Trusted_Connection=True;Encrypt=False", b => b.MigrationsAssembly("data_access_layer"));
             // WHY THO PLS GOD HELP ME I WANT TO KILL MYSELF THANKS
             // EMPTY CONSTRUCTOR + ONCONFIGURING USESQLSERVER = MIGRATION WORKS
             // SERVICE REGISTRATION IN PROGRAM.CS = MIGRATION GETFUCKED
