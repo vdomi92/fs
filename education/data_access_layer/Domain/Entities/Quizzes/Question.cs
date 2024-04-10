@@ -2,12 +2,12 @@
 
 namespace data_access_layer.Domain.Entities.Quizzes
 {
-    public class Question : Entity
+    public class Question(string questionText, int points) : Entity
     {
-        public string QuestionText { get; set; }
+        public string QuestionText { get; set; } = questionText;
 
-        public int Points { get; set; }
-        
-        public List<Answer> AnswerOptions { get; set; }
+        public int Points { get; set; } = points;
+
+        public List<Answer> AnswerOptions { get; set; } = [];
     }
 }

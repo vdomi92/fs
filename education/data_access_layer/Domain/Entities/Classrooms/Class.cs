@@ -1,18 +1,15 @@
 ﻿using data_access_layer.Domain.Entites.Common;
-using data_access_layer.Domain.Entities.Quizzes;
 
 namespace data_access_layer.Domain.Entities.Classrooms
 {
-    public class Class : Entity
+    public class Class(string name, User teacher) : Entity
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = name;
 
-        public List<User> Students { get; set; }
+        public List<User> Students { get; set; } = [];
 
-        public User Teacher { get; set; }
+        public User Teacher { get; set; } = teacher;
 
-        public List<Quiz> Quizzes { get; set; }
-
-        public List<HomeWork> Tasks { get; set; }
+        public List<HomeWork> HomeWorks { get; set; } = [];
     }
 }

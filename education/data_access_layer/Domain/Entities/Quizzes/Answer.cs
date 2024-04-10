@@ -2,10 +2,10 @@
 
 namespace data_access_layer.Domain.Entities.Quizzes
 {
-    public class Answer : Entity
+    public class Answer(string answerText, bool isCorrect) : Entity
     {
-        public string AnswerText { get; set; }
+        public string AnswerText { get; set; } = answerText;
 
-        public bool IsCorrect { get; set; }
+        public bool IsCorrect { get; set; } = isCorrect;
     }
 }
