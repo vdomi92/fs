@@ -32,6 +32,8 @@ namespace data_access_layer.Domain.Context
 
         public DbSet<GivenAnswer> GivenAnswers { get; set; }
 
+        public DbSet<GivenAnswerDictionary> GivenAnswerDictionaries { get; set; }
+
         public DbSet<Class> Classes { get; set; }
 
         public DbSet<HomeWork> HomeWorks { get; set; }
