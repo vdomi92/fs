@@ -1,14 +1,15 @@
 ﻿using data_access_layer.Domain.Entites.Common;
+using Microsoft.AspNetCore.Identity;
 
 namespace data_access_layer.Domain.Entities.Classrooms
 {
-    public class Class(string name, User teacher) : Entity
+    public class Class : Entity
     {
-        public string Name { get; set; } = name;
+        public required string Name { get; set; }
 
         public List<User> Students { get; set; } = [];
 
-        public User Teacher { get; set; } = teacher;
+        public required User Teacher { get; set; }
 
         public List<HomeWork> HomeWorks { get; set; } = [];
     }

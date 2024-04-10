@@ -1,6 +1,6 @@
 using data_access_layer.Domain.Context;
 using data_access_layer.Domain.Entites.Common;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 

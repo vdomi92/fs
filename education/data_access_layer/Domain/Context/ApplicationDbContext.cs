@@ -3,10 +3,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using data_access_layer.Domain.Entities.Quizzes;
 using data_access_layer.Domain.Entities.Classrooms;
+using data_access_layer.Domain.Entites.Common;
 
 namespace data_access_layer.Domain.Context
 {
-    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
+    public class ApplicationDbContext : IdentityDbContext<User>
     {
         public ApplicationDbContext()
         {
@@ -33,7 +34,7 @@ namespace data_access_layer.Domain.Context
 
         public DbSet<GivenAnswer> GivenAnswers { get; set; }
 
-        public DbSet<GivenAnswerDictionary> GivenAnswerDictionaries { get; set; }
+        public DbSet<Attempt> Attempts { get; set; }
 
         public DbSet<Class> Classes { get; set; }
 
@@ -41,7 +42,22 @@ namespace data_access_layer.Domain.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Class>()
+                .HasOne(c => c.Teacher)
+                .WithMany(t => t.TeacherInClasses)
+                .HasForeignKey(t => t.Id);
+
+            modelBuilder.Entity<Class>()
+                .HasMany(c => c.Students)
+                .WithMany(t => t.StudentInClasses)
+                .UsingEntity(join => join.ToTable("StudentClass"));
+
+            modelBuilder.Entity<Class>()
+                .HasMany(c => c.HomeWorks)
+                .WithOne(hw => hw.Class)
+                .HasForeignKey(hw => hw.Id);
+
+            // .ComplexProperty(givenA => givenA.GivenADict) EF configuration
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

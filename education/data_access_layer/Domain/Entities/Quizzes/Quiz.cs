@@ -2,14 +2,14 @@
 
 namespace data_access_layer.Domain.Entities.Quizzes
 {
-    public class Quiz(User createdBy, string description, string title) : Entity
+    public class Quiz : Entity
     {
-        public string Title { get; set; } = title;
+        public required string Title { get; set; }
 
-        public string Description { get; set; } = description;
+        public required string Description { get; set; }
 
         public List<Question> Questions { get; set; } = [];
 
-        public User CreatedBy { get; set; } = createdBy;
+        public required User CreatedBy { get; set; }
     }
 }
