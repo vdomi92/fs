@@ -2,9 +2,9 @@
 
 namespace data_access_layer.Domain.Entities.Quizzes
 {
-    public class GivenAnswer(Quiz quiz, User user): Entity
+    public class GivenAnswer(Quiz quiz, User user, GivenAnswerDictionary givenAnswerDictionary) : Entity
     {
-        public Dictionary<Question, List<Answer>> GivenAnswers { get; set; } = [];
+        public GivenAnswerDictionary GivenAnswerDictionary { get; set; } = givenAnswerDictionary;
 
         public User User { get; set; } = user;
 
