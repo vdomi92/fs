@@ -5,19 +5,13 @@ using System.Data.Common;
 
 namespace data_access_layer.Repositories
 {
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork(ApplicationDbContext context) : IUnitOfWork
     {
-        private ApplicationDbContext _context;
+        private ApplicationDbContext _context = context;
 
-        private Dictionary<Type, object> _repositories;
+        private Dictionary<Type, object> _repositories = [];
 
         private bool disposed = false;
-
-        public UnitOfWork(ApplicationDbContext context)
-        {
-            _context = context;
-            _repositories = [];
-        }
 
         public IRepository<T> GetRepository<T>() where T : Entity
         {

@@ -6,17 +6,11 @@ using System.Linq.Expressions;
 
 namespace data_access_layer.Repositories
 {
-    public class Repository<T> : IRepository<T> where T : Entity
+    public class Repository<T>(ApplicationDbContext context) : IRepository<T> where T : Entity
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context = context;
 
-        private readonly DbSet<T> _dbSet;
-
-        public Repository(ApplicationDbContext context)
-        {
-            _context = context;
-            _dbSet = context.Set<T>();
-        }
+        private readonly DbSet<T> _dbSet = context.Set<T>();
 
         public T? GetById(int id)
         {
