@@ -57,7 +57,6 @@ namespace data_access_layer.Domain.Context
                 .WithOne(hw => hw.Class)
                 .HasForeignKey(hw => hw.Id);
 
-            // .ComplexProperty(givenA => givenA.GivenADict) EF configuration
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

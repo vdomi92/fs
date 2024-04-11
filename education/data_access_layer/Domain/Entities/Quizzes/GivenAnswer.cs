@@ -1,5 +1,4 @@
 ﻿using data_access_layer.Domain.Entites.Common;
-using data_access_layer.Domain.Entities.Classrooms;
 
 namespace data_access_layer.Domain.Entities.Quizzes
 {
