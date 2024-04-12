@@ -1,6 +1,6 @@
 using data_access_layer.Domain.Context;
 using data_access_layer.Domain.Entites.Common;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,9 +13,9 @@ builder.Services.AddSwaggerGen();
 
 // Registering the DbContext, should work as the commented section below, but it doesn't. Microsoft bros at it trying to make it work.
 // Untill that, we have hardcoded sql connection string.
-//var connectionString = builder.Configuration.GetConnectionString("EduSqlServer");
-//builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString, b => b.MigrationsAssembly("data_access_layer")));
-builder.Services.AddDbContext<ApplicationDbContext>();
+var connectionString = builder.Configuration.GetConnectionString("EduSqlServer");
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString, b => b.MigrationsAssembly("data_access_layer")));
+//builder.Services.AddDbContext<ApplicationDbContext>();
 
 // Registering the Identity
 builder.Services.AddAuthorization();
