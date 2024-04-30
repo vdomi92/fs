@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using data_access_layer.Domain.Entities.Quizzes;
-using data_access_layer.Domain.Entities.Classrooms;
 using data_access_layer.Domain.Entites.Common;
 
 namespace data_access_layer.Domain.Context
@@ -35,10 +34,7 @@ namespace data_access_layer.Domain.Context
             //    .WithOne(hw => hw.Class)
             //    .HasForeignKey(hw => hw.Id);
 
-        //    modelBuilder.Entity<Class>()
-        //        .HasMany(c => c.HomeWorks)
-        //        .WithOne(hw => hw.Class)
-        //        .HasForeignKey(hw => hw.Id);
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
