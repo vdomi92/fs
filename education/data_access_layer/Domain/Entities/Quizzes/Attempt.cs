@@ -9,5 +9,7 @@ namespace data_access_layer.Domain.Entities.Quizzes
         public required DateTime AnsweredAt { get; set; }
 
         public List<GivenAnswer> GivenAnswers { get; set; } = [];
+
+        public bool IsCompleted { get; set; }
     }
 }

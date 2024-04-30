@@ -36,26 +36,22 @@ namespace data_access_layer.Domain.Context
 
         public DbSet<Attempt> Attempts { get; set; }
 
-        public DbSet<Class> Classes { get; set; }
-
-        public DbSet<HomeWork> HomeWorks { get; set; }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Class>()
-                .HasOne(c => c.Teacher)
-                .WithMany(t => t.TeacherInClasses)
-                .HasForeignKey(t => t.Id);
+            //modelBuilder.Entity<Class>()
+            //    .HasOne(c => c.Teacher)
+            //    .WithMany(t => t.TeacherInClasses)
+            //    .HasForeignKey(t => t.Id);
 
-            modelBuilder.Entity<Class>()
-                .HasMany(c => c.Students)
-                .WithMany(t => t.StudentInClasses)
-                .UsingEntity(join => join.ToTable("StudentClass"));
+            //modelBuilder.Entity<Class>()
+            //    .HasMany(c => c.Students)
+            //    .WithMany(t => t.StudentInClasses)
+            //    .UsingEntity(join => join.ToTable("StudentClass"));
 
-            modelBuilder.Entity<Class>()
-                .HasMany(c => c.HomeWorks)
-                .WithOne(hw => hw.Class)
-                .HasForeignKey(hw => hw.Id);
+            //modelBuilder.Entity<Class>()
+            //    .HasMany(c => c.HomeWorks)
+            //    .WithOne(hw => hw.Class)
+            //    .HasForeignKey(hw => hw.Id);
 
         }
 
