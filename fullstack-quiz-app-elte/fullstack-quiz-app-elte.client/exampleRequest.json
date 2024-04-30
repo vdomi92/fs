@@ -1,0 +1,59 @@
+{
+  "User": "email@email.com",
+  "Quiz": {
+    "Title": "Exammple title",
+    "Description": "Example lorem impsum",
+    "Questions": [
+      {
+        "QuestionText": "Example question text?",
+        "Points": 1,
+        "Answers": [
+          {
+            "AnswerText": "Answer 1",
+            "IsCorrect": true
+          },
+          {
+            "AnswerText": "Answer 2",
+            "IsCorrect": false
+          },
+          {
+            "AnswerText": "Answer 3",
+            "IsCorrect": false
+          },
+          {
+            "AnswerText": "Answer 4",
+            "IsCorrect": false
+          }
+        ]
+      },
+      {
+        "QuestionText": "Another question text?",
+        "Points": 1,
+        "Answers": [
+          {
+            "AnswerText": "Answer 1",
+            "IsCorrect": true
+          },
+          {
+            "AnswerText": "Answer 2",
+            "IsCorrect": false
+          }
+        ]
+      },
+      {
+        "QuestionText": "And another question text?",
+        "Points": 2,
+        "Answers": [
+          {
+            "AnswerText": "Answer 1",
+            "IsCorrect": true
+          },
+          {
+            "AnswerText": "Answer 2",
+            "IsCorrect": false
+          }
+        ]
+      }
+    ]
+  }
+}

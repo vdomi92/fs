@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fullstack-quiz-app-elte.Server", "fullstack-quiz-app-elte.Server\fullstack-quiz-app-elte.Server.csproj", "{FB89A973-37EF-4B8E-AF9E-404E13188E7F}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "fullstack-quiz-app-elte.client", "fullstack-quiz-app-elte.client\fullstack-quiz-app-elte.client.esproj", "{05ADE260-67F0-4833-B35B-0CAF9467146B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB89A973-37EF-4B8E-AF9E-404E13188E7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB89A973-37EF-4B8E-AF9E-404E13188E7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB89A973-37EF-4B8E-AF9E-404E13188E7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB89A973-37EF-4B8E-AF9E-404E13188E7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05ADE260-67F0-4833-B35B-0CAF9467146B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05ADE260-67F0-4833-B35B-0CAF9467146B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05ADE260-67F0-4833-B35B-0CAF9467146B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{05ADE260-67F0-4833-B35B-0CAF9467146B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05ADE260-67F0-4833-B35B-0CAF9467146B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05ADE260-67F0-4833-B35B-0CAF9467146B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {730A5D53-F2BC-499C-85AF-7FB696DF5B49}
+	EndGlobalSection
+EndGlobal
