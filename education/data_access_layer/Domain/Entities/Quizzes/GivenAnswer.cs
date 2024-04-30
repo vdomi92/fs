@@ -6,6 +6,6 @@ namespace data_access_layer.Domain.Entities.Quizzes
     {
         public required Answer Answer { get; set; }
 
-        public required Question Question { get; set; }
+        public required Attempt Attempt { get; set; }
     }
 }

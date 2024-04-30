@@ -17,10 +17,84 @@ namespace data_access_layer.Domain.Context
 
         public DbSet<Attempt> Attempts { get; set; }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //
+            //  Quiz configuration
+            //
 
-        //}
+            //Relationships:
+            modelBuilder.Entity<Quiz>()
+                .HasMany(q => q.Questions)
+                .WithOne(question => question.Quiz)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Quiz>()
+                .HasOne(q => q.CreatedBy)
+                .WithMany(user => user.Quizs)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            //Properties:
+            modelBuilder.Entity<Quiz>().Property(q => q.Title).IsRequired();
+            modelBuilder.Entity<Quiz>().Property(q => q.Description).IsRequired();
+            modelBuilder.Entity<Quiz>().Property(q => q.CreatedBy).IsRequired();
+
+            //
+            //  Question configuration
+            //
+
+            //Relationships:
+            modelBuilder.Entity<Question>()
+                .HasMany(q => q.AnswerOptions)
+                .WithOne(answerOption => answerOption.Question)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            //Properties:
+            modelBuilder.Entity<Question>().Property(q => q.QuestionText).IsRequired();
+            modelBuilder.Entity<Question>().Property(q => q.Points).IsRequired();
+            modelBuilder.Entity<Question>().Property(q => q.IsMultipleChoice).IsRequired();
+
+            //
+            //  Answer configuration
+            //
+
+            //Properties:
+            modelBuilder.Entity<Answer>().Property(a => a.AnswerText).IsRequired();
+            modelBuilder.Entity<Answer>().Property(a => a.IsCorrect).IsRequired();
+
+            //
+            //  Attempt configuration
+            //
+
+            //Relationships:
+            modelBuilder.Entity<Attempt>()
+                .HasOne(a => a.User)
+                .WithMany(user => user.Attempts)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Attempt>()
+                .HasMany(a => a.GivenAnswers)
+                .WithOne(givenAnswers => givenAnswers.Attempt)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            //Properties:
+            modelBuilder.Entity<Attempt>().Property(a => a.StartTime).IsRequired();
+            modelBuilder.Entity<Attempt>().Property(a => a.IsCompleted).IsRequired();
+            modelBuilder.Entity<Attempt>().Property(a => a.FinishedAt).IsRequired(false);
+
+            //
+            //  GivenAnswer configuration
+            //
+
+            //Relationships:
+            modelBuilder.Entity<GivenAnswer>()
+                .HasOne(ga => ga.Answer)
+                .WithMany()
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<GivenAnswer>().Property(ga => ga.Answer).IsRequired();
+
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
