@@ -6,7 +6,9 @@ namespace data_access_layer.Domain.Entities.Quizzes
     {
         public required User User { get; set; }
 
-        public required DateTime AnsweredAt { get; set; }
+        public required DateTime StartTime { get; set; }
+
+        public DateTime? FinishedAt { get; set; }
 
         public List<GivenAnswer> GivenAnswers { get; set; } = [];
 
