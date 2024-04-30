@@ -8,7 +8,7 @@ namespace data_access_layer.Domain.Entities.Quizzes
 
         public required string Description { get; set; }
 
-        public required User CreatedBy { get; set; }
+        //public required User CreatedBy { get; set; }
 
         public virtual List<Question> Questions { get; set; } = [];
 

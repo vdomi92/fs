@@ -19,6 +19,8 @@ namespace data_access_layer.Domain.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             //
             //  Quiz configuration
             //
@@ -26,18 +28,13 @@ namespace data_access_layer.Domain.Context
             //Relationships:
             modelBuilder.Entity<Quiz>()
                 .HasMany(q => q.Questions)
-                .WithOne(question => question.Quiz)
+                .WithOne()
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<Quiz>()
-                .HasOne(q => q.CreatedBy)
-                .WithMany(user => user.Quizs)
-                .OnDelete(DeleteBehavior.Cascade);
 
             //Properties:
             modelBuilder.Entity<Quiz>().Property(q => q.Title).IsRequired();
             modelBuilder.Entity<Quiz>().Property(q => q.Description).IsRequired();
-            modelBuilder.Entity<Quiz>().Property(q => q.CreatedBy).IsRequired();
 
             //
             //  Question configuration
@@ -68,13 +65,8 @@ namespace data_access_layer.Domain.Context
 
             //Relationships:
             modelBuilder.Entity<Attempt>()
-                .HasOne(a => a.User)
-                .WithMany(user => user.Attempts)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<Attempt>()
                 .HasMany(a => a.GivenAnswers)
-                .WithOne(givenAnswers => givenAnswers.Attempt)
+                .WithOne()
                 .OnDelete(DeleteBehavior.Cascade);
 
             //Properties:
@@ -85,14 +77,6 @@ namespace data_access_layer.Domain.Context
             //
             //  GivenAnswer configuration
             //
-
-            //Relationships:
-            modelBuilder.Entity<GivenAnswer>()
-                .HasOne(ga => ga.Answer)
-                .WithMany()
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<GivenAnswer>().Property(ga => ga.Answer).IsRequired();
 
         }
 

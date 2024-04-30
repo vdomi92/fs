@@ -10,7 +10,7 @@ namespace data_access_layer.Domain.Entities.Quizzes
 
         public required bool IsMultipleChoice { get; set; }
 
-        public required Quiz Quiz { get; set; }
+        //public required Quiz Quiz { get; set; }
 
         public virtual List<Answer> AnswerOptions { get; set; } = [];
     }

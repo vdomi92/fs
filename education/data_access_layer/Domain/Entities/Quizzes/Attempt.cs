@@ -10,7 +10,7 @@ namespace data_access_layer.Domain.Entities.Quizzes
 
         public DateTime? FinishedAt { get; set; }
 
-        public required User User { get; set; }
+        //public required User User { get; set; }
 
         public virtual List<GivenAnswer> GivenAnswers { get; set; } = [];
 

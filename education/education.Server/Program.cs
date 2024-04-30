@@ -11,21 +11,32 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var connectionString = builder.Configuration.GetConnectionString("EduSqlServer");
-builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString, b => b.MigrationsAssembly("data_access_layer")));
+builder.Services.AddDbContext<ApplicationDbContext>(
+    //options => options.UseSqlServer(
+    //    builder.Configuration.GetConnectionString("EduSqlServer"),
+    //    b => b.MigrationsAssembly("data_access_layer"))
+    );
 
 // Registering the Identity
 builder.Services.AddAuthorization();
 
 // Activate identity API endpoints
-builder.Services.AddIdentityApiEndpoints<User>()
+builder.Services.AddIdentityApiEndpoints<User>(options => {
+    options.Password.RequiredLength = 6;
+    options.Password.RequireDigit = true;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequireUppercase = true;
+
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+    options.Lockout.MaxFailedAccessAttempts = 5;
+    options.Lockout.AllowedForNewUsers = true;
+
+    options.User.RequireUniqueEmail = true;
+})
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
 
 var app = builder.Build();
-
-// Mapping identity endpoints
-app.MapIdentityApi<User>();
 
 app.UseDefaultFiles();
 app.UseStaticFiles();
@@ -36,7 +47,11 @@ app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
+
+// Mapping identity endpoints
+app.MapIdentityApi<User>();
 
 app.MapControllers();
 

@@ -22,6 +22,11 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
+    <Folder Include="Contracts\" />
+    <Folder Include="Domain\Context" />
+    <Folder Include="Domain\Entities\Common" />
+    <Folder Include="Domain\Entities\Quizzes" />
+    <Folder Include="Repositories\" />
   </ItemGroup>
 
 </Project>

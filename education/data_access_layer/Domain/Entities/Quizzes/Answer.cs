@@ -9,5 +9,7 @@ namespace data_access_layer.Domain.Entities.Quizzes
         public required bool IsCorrect { get; set; }
 
         public required Question Question { get; set; }
+
+        public virtual List<GivenAnswer> GivenAnswers { get; set; } = [];
     }
 }
