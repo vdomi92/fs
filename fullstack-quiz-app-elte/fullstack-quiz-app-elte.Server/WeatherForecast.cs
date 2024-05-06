@@ -1,4 +1,4 @@
-namespace education.Server
+namespace fullstack_quiz_app_elte.Server
 {
     public class WeatherForecast
     {

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace education.Server.Controllers
+namespace fullstack_quiz_app_elte.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
