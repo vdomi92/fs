@@ -44,13 +44,12 @@ namespace fullstack_quiz_app_elte.Server.DAL.Domain.Context
             //Relationships:
             modelBuilder.Entity<Question>()
                 .HasMany(q => q.AnswerOptions)
-                .WithOne(answerOption => answerOption.Question)
+                .WithOne()
                 .OnDelete(DeleteBehavior.Cascade);
 
             //Properties:
             modelBuilder.Entity<Question>().Property(q => q.QuestionText).IsRequired();
             modelBuilder.Entity<Question>().Property(q => q.Points).IsRequired();
-            modelBuilder.Entity<Question>().Property(q => q.IsMultipleChoice).IsRequired();
 
             //
             //  Answer configuration

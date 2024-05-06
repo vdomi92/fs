@@ -235,7 +235,7 @@ namespace fullstack_quiz_app_elte.Server.Migrations
                     b.Property<bool>("IsCorrect")
                         .HasColumnType("bit");
 
-                    b.Property<int>("QuestionId")
+                    b.Property<int?>("QuestionId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -302,9 +302,6 @@ namespace fullstack_quiz_app_elte.Server.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("IsMultipleChoice")
-                        .HasColumnType("bit");
 
                     b.Property<int>("Points")
                         .HasColumnType("int");
@@ -402,13 +399,10 @@ namespace fullstack_quiz_app_elte.Server.Migrations
 
             modelBuilder.Entity("fullstack_quiz_app_elte.Server.DAL.Domain.Entities.Quizzes.Answer", b =>
                 {
-                    b.HasOne("fullstack_quiz_app_elte.Server.DAL.Domain.Entities.Quizzes.Question", "Question")
+                    b.HasOne("fullstack_quiz_app_elte.Server.DAL.Domain.Entities.Quizzes.Question", null)
                         .WithMany("AnswerOptions")
                         .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Question");
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("fullstack_quiz_app_elte.Server.DAL.Domain.Entities.Quizzes.Attempt", b =>

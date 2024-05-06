@@ -1,5 +1,9 @@
+using fullstack_quiz_app_elte.Server.BLL.Contracts;
+using fullstack_quiz_app_elte.Server.BLL.Services;
+using fullstack_quiz_app_elte.Server.DAL.Contracts;
 using fullstack_quiz_app_elte.Server.DAL.Domain.Context;
 using fullstack_quiz_app_elte.Server.DAL.Domain.Entities.Common;
+using fullstack_quiz_app_elte.Server.DAL.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +15,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("QuizSqlServer")));
 // Registering the Identity
 builder.Services.AddAuthorization();
 
@@ -29,6 +33,9 @@ builder.Services.AddIdentityApiEndpoints<AppUser>(options => {
     options.User.RequireUniqueEmail = true;
 })
     .AddEntityFrameworkStores<AppDbContext>();
+
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<IQuizService, QuizService>();
 
 var app = builder.Build();
 

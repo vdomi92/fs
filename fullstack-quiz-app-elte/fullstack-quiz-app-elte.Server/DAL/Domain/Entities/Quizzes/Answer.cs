@@ -8,8 +8,6 @@ namespace fullstack_quiz_app_elte.Server.DAL.Domain.Entities.Quizzes
 
         public required bool IsCorrect { get; set; }
 
-        public required Question Question { get; set; }
-
         public virtual List<GivenAnswer> GivenAnswers { get; set; } = [];
     }
 }

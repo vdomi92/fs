@@ -10,8 +10,6 @@ namespace fullstack_quiz_app_elte.Server.DAL.Domain.Entities.Quizzes
 
         public DateTime? FinishedAt { get; set; }
 
-        //public required User User { get; set; }
-
         public virtual List<GivenAnswer> GivenAnswers { get; set; } = [];
     }
 }

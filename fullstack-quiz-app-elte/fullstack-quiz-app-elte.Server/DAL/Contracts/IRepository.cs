@@ -17,5 +17,6 @@ namespace fullstack_quiz_app_elte.Server.DAL.Contracts
 
         public void Delete(int id);
 
+        public void SaveChanges();
     }
 }

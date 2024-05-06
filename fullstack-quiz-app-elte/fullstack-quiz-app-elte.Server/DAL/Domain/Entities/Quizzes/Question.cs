@@ -8,7 +8,7 @@ namespace fullstack_quiz_app_elte.Server.DAL.Domain.Entities.Quizzes
 
         public required int Points { get; set; }
 
-        public required bool IsMultipleChoice { get; set; }
+        //public required bool IsMultipleChoice { get; set; }
 
         //public required Quiz Quiz { get; set; }
 

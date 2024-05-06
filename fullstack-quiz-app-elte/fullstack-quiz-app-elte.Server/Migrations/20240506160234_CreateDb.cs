@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace fullstack_quiz_app_elte.Server.Migrations
 {
     /// <inheritdoc />
-    public partial class createdb : Migration
+    public partial class CreateDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -205,7 +205,6 @@ namespace fullstack_quiz_app_elte.Server.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     QuestionText = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Points = table.Column<int>(type: "int", nullable: false),
-                    IsMultipleChoice = table.Column<bool>(type: "bit", nullable: false),
                     QuizId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -227,7 +226,7 @@ namespace fullstack_quiz_app_elte.Server.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AnswerText = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsCorrect = table.Column<bool>(type: "bit", nullable: false),
-                    QuestionId = table.Column<int>(type: "int", nullable: false)
+                    QuestionId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {

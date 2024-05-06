@@ -45,5 +45,10 @@ namespace fullstack_quiz_app_elte.Server.DAL.Repositories
                 _dbSet.Remove(entity);
             }
         }
+
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
     }
 }
